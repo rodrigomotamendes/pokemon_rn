@@ -1,15 +1,16 @@
+import { TouchableOpacity } from 'react-native';
 import styled from 'styled-components/native';
 
 export const Container = styled.View`
   width: 50%;
   height: 110px;
-  padding-left: 5.5%;
-  padding-right: 3%;
+  padding-left: 5.5px;
+  padding-right: 5.5px;
   padding-top: 9px;
   padding-bottom: 9px;
 `;
 
-export const CardBackground = styled.View`
+export const CardBackground = styled(TouchableOpacity)`
   flex: 1;
   border-radius: 15px;
   background-color: ${({ theme }) => theme.colors.plant};
@@ -40,6 +41,7 @@ export const TitleName = styled.Text`
   font-size: 14px;
   color: ${({ theme }) => theme.colors.text_light};
   padding-bottom: 7px;
+  text-transform: capitalize;
 `;
 
 export const ImagePokemonWrap = styled.View`

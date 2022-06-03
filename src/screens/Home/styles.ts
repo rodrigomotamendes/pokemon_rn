@@ -1,4 +1,6 @@
 import styled from 'styled-components/native';
+import { FlatList, FlatListProps } from 'react-native';
+import { PokeDTO } from '../../dtos/PokeDTO';
 
 export const Container = styled.View`
   flex: 1;
@@ -44,9 +46,16 @@ export const ImagePeople = styled.View`
 export const TextTitlePokemon = styled.Text`
   padding-top: 39px;
   padding-left: 21px;
-  padding-bottom: 31px;
+  padding-bottom: 21px;
 
   font-weight: 600;
   font-size: 24px;
-  color: ${({ theme }) => theme.colors.text_dark}
+  color: ${({ theme }) => theme.colors.text_dark};
 `;
+
+export const PokeList = styled(FlatList as new (props: FlatListProps<PokeDTO>)=> FlatList<PokeDTO>).attrs({
+  contentContainerStyle: {
+    paddingHorizontal: 14.5
+  },
+  showsVerticalScrollIndicator: false
+})``;

@@ -1,4 +1,7 @@
 import React from 'react';
+import { TouchableOpacityProps } from 'react-native';
+
+import { PokeDTO } from '../../dtos/PokeDTO';
 
 import {
   Container,
@@ -12,17 +15,25 @@ import {
   ImagePokemon,
 } from './styles';
 
-export function Card(){
+interface Props extends TouchableOpacityProps{
+  data: PokeDTO;
+}
+
+export function Card({ data, ...rest } : Props){
+  const formatted = {
+
+  }
+
   return (
-    <Container>
+    <Container {...rest}>
       <CardBackground>
         <TitleNumberWrap>
-          <TitleNumber>#001</TitleNumber>
+          <TitleNumber>#{`000${data.id}`.slice(-4)}</TitleNumber>
         </TitleNumberWrap>
 
         <TitleNameContainer>
           <TitleNameWrap>
-            <TitleName>Bulbasaur</TitleName>
+            <TitleName>{data.name}</TitleName>
           </TitleNameWrap>
           <ImagePokemonWrap>
             <ImagePokemon 

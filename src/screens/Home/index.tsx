@@ -15,6 +15,7 @@ import {
   SubtitleHeader,
   ImagePeople,
   TextTitlePokemon,
+  PokeList,
 } from './styles';
 
 export function Home(){
@@ -59,7 +60,14 @@ export function Home(){
         Qual pokémon você{'\n'}escolheria?
       </TextTitlePokemon>
 
-      <Card />
+      <PokeList
+        data={pokemon}
+        numColumns={2}
+        keyExtractor={item => String(item.id)}
+        renderItem={({ item }) =>
+          <Card data={item}/>
+        }
+      />
     </Container>
   );
 }
