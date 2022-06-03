@@ -20,15 +20,11 @@ interface Props extends TouchableOpacityProps{
 }
 
 export function Card({ data, ...rest } : Props){
-  const formatted = {
-
-  }
-
   return (
     <Container {...rest}>
-      <CardBackground>
+      <CardBackground color={data.types[0].type.name}>
         <TitleNumberWrap>
-          <TitleNumber>#{`000${data.id}`.slice(-4)}</TitleNumber>
+          <TitleNumber>#{`00${data.id}`.slice(-3)}</TitleNumber>
         </TitleNumberWrap>
 
         <TitleNameContainer>

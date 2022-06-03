@@ -21,8 +21,6 @@ import {
 export function Home(){
   const [pokemon, setPokemon] = useState<PokeDTO[]>([]);
 
-  console.log(pokemon)
-
   useEffect(() => {
     async function fetchPokemons() {
       await api.get('/')

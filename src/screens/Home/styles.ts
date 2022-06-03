@@ -4,7 +4,7 @@ import { PokeDTO } from '../../dtos/PokeDTO';
 
 export const Container = styled.View`
   flex: 1;
-  
+  background-color: ${({ theme }) => theme.colors.background_primary};
 `;
 
 export const Header = styled.View`
@@ -44,7 +44,7 @@ export const ImagePeople = styled.View`
 `;
 
 export const TextTitlePokemon = styled.Text`
-  padding-top: 39px;
+  padding-top: 29px;
   padding-left: 21px;
   padding-bottom: 21px;
 
@@ -55,7 +55,7 @@ export const TextTitlePokemon = styled.Text`
 
 export const PokeList = styled(FlatList as new (props: FlatListProps<PokeDTO>)=> FlatList<PokeDTO>).attrs({
   contentContainerStyle: {
-    paddingHorizontal: 14.5
+    paddingHorizontal: 14.5,
   },
-  showsVerticalScrollIndicator: false
+  showsVerticalScrollIndicator: false,
 })``;
