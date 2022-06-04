@@ -1,5 +1,6 @@
 import React from 'react';
 import { StatusBar } from 'react-native';
+import LottieView from 'lottie-react-native';
 
 import PokemonLogo from '../../assets/PokemonLogo.svg';
 
@@ -7,9 +8,10 @@ import {
   Container,
   LogoWrap,
   Footer,
-  PokebalSVG,
+  PokebalAnimationWrap,
   TitleWrap,
   TitleFooter,
+  DotWrap,
 } from './styles';
 
 export function Loading(){
@@ -27,10 +29,24 @@ export function Loading(){
         />
       </LogoWrap>
       <Footer>
-        <PokebalSVG/>
+        <PokebalAnimationWrap>
+          <LottieView
+            source={require('../../assets/pokeballLoadingAnimation.json')}
+            autoPlay
+            loop
+            style={{flex: 1, width: '100%', height: '100%' , backgroundColor: 'transparent',}}
+          />
+        </PokebalAnimationWrap>
         <TitleWrap>
           <TitleFooter>Carregando</TitleFooter>
-          <TitleFooter>  ...</TitleFooter>
+          <DotWrap>
+            <LottieView
+              source={require('../../assets/dotAnimation.json')}
+              autoPlay
+              loop
+              style={{flex: 1, width: '100%', height: '100%' , backgroundColor: 'transparent',}}
+            />
+          </DotWrap>
         </TitleWrap>
       </Footer>
 

@@ -7,6 +7,7 @@ import { PokeDTO } from '../../dtos/PokeDTO';
 
 import { Loading } from '../Loading';
 import { Card } from '../../components/Card';
+import { FooterLoading } from '../../components/FooterLoading';
 
 import {
   Container,
@@ -76,12 +77,7 @@ export function Home(){
         keyExtractor={item => String(item.id)}
         onEndReached={fetchPokemons}
         onEndReachedThreshold={0.3}
-        ListFooterComponent={
-          <View>
-            <TextTitlePokemon>Pokemon</TextTitlePokemon>
-            <ActivityIndicator style={{paddingTop: 16, paddingBottom: 16}}/>
-          </View>
-        }
+        ListFooterComponent={<FooterLoading />}
         renderItem={({ item }) =>
           <Card data={item}/>
         }
