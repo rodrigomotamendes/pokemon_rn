@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { StatusBar } from 'react-native';
+import { ActivityIndicator, StatusBar, View } from 'react-native';
 
 import axios from 'axios';
 import { api } from '../../services/api';
 import { PokeDTO } from '../../dtos/PokeDTO';
 
+import { Loading } from '../Loading';
 import { Card } from '../../components/Card';
 
 import {
@@ -20,22 +21,33 @@ import {
 
 export function Home(){
   const [pokemon, setPokemon] = useState<PokeDTO[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [page, setPage] = useState(14);
 
   useEffect(() => {
-    async function fetchPokemons() {
-      await api.get('/')
-        .then((res) => {
-          return res.data.results
-        })
-        .then((results) => {
-          return Promise.all(results.map((res: any) => axios.get(res.url)))
-        })
-        .then((results) => {
-          setPokemon(results.map((res) => res.data))
-        })
-    }
     fetchPokemons()
-  }, [])
+  }, []);
+
+  async function fetchPokemons() {
+    await api.get(`/?limit=${page}`)
+      .then((res) => {
+        return res.data.results
+      })
+      .then((results) => {
+        return Promise.all(results.map((res: any) => axios.get(res.url)))
+      })
+      .then((results) => {
+        setPokemon(results.map((res) => res.data));
+        setPage(page + 14);
+        setLoading(false);
+      })
+  }
+
+  if(loading == true) {
+    return (
+      <Loading/>
+    )
+  }
 
   return (
     <Container>
@@ -62,10 +74,19 @@ export function Home(){
         data={pokemon}
         numColumns={2}
         keyExtractor={item => String(item.id)}
+        onEndReached={fetchPokemons}
+        onEndReachedThreshold={0.3}
+        ListFooterComponent={
+          <View>
+            <TextTitlePokemon>Pokemon</TextTitlePokemon>
+            <ActivityIndicator style={{paddingTop: 16, paddingBottom: 16}}/>
+          </View>
+        }
         renderItem={({ item }) =>
           <Card data={item}/>
         }
       />
+      
     </Container>
   );
 }
