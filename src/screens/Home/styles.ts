@@ -17,6 +17,7 @@ export const Header = styled.View`
   padding-right: 33px;
   flex-direction: row;
   background-color: ${({ theme }) => theme.colors.header};
+  margin-bottom: 10px;
 `;
 
 export const TextHeader = styled.View`
@@ -44,8 +45,8 @@ export const ImagePeople = styled.View`
 `;
 
 export const TextTitlePokemon = styled.Text`
-  padding-top: 29px;
-  padding-left: 21px;
+  padding-top: 19px;
+  padding-left: 6.5px;
   padding-bottom: 21px;
 
   font-weight: 600;

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { ActivityIndicator, StatusBar, View } from 'react-native';
+import { StatusBar } from 'react-native';
 
 import axios from 'axios';
 import { api } from '../../services/api';
@@ -67,11 +67,12 @@ export function Home(){
         <ImagePeople />
       </Header>
 
-      <TextTitlePokemon>
-        Qual pokémon você{'\n'}escolheria?
-      </TextTitlePokemon>
-
       <PokeList
+        ListHeaderComponent={
+          <TextTitlePokemon>
+            Qual pokémon você{'\n'}escolheria?
+          </TextTitlePokemon>
+        }
         data={pokemon}
         numColumns={2}
         keyExtractor={item => String(item.id)}
