@@ -21,7 +21,7 @@ interface Props extends TouchableOpacityProps{
 
 export function Card({ data, ...rest } : Props){
   return (
-    <Container {...rest}>
+    <Container activeOpacity={0.7} {...rest}>
       <CardBackground color={data.types[0].type.name}>
         <TitleNumberWrap>
           <TitleNumber>#{`00${data.id}`.slice(-3)}</TitleNumber>
@@ -32,9 +32,10 @@ export function Card({ data, ...rest } : Props){
             <TitleName>{data.name}</TitleName>
           </TitleNameWrap>
           <ImagePokemonWrap>
-            <ImagePokemon 
-              resizeMode='contain'
-              source={{ uri: 'https://assets.pokemon.com/assets/cms2/img/pokedex/detail/001.png'}}
+            <ImagePokemon
+              width='100%'
+              height='100%'
+              uri={`https://unpkg.com/pokeapi-sprites@2.0.2/sprites/pokemon/other/dream-world/${data.id}.svg`}
             />
           </ImagePokemonWrap>
         </TitleNameContainer>

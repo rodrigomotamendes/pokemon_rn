@@ -1,5 +1,6 @@
 import styled from 'styled-components/native';
 import { TouchableOpacity } from 'react-native';
+import { SvgUri } from 'react-native-svg';
 
 interface ColorProps {
   color: string;
@@ -104,9 +105,11 @@ export const TitleName = styled.Text`
 
 export const ImagePokemonWrap = styled.View`
   flex: 1;
+  margin-right: 8px;
+  margin-left: 3px;
+  margin-bottom: 3px;
+  align-items: center;
+  justify-content: flex-end;
 `;
 
-export const ImagePokemon = styled.Image`
-  width: 100%;
-  height: 100%;
-`;
+export const ImagePokemon = styled(SvgUri)``;

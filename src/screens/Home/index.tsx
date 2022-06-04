@@ -76,7 +76,7 @@ export function Home(){
         numColumns={2}
         keyExtractor={item => String(item.id)}
         onEndReached={fetchPokemons}
-        onEndReachedThreshold={0.3}
+        onEndReachedThreshold={0.4}
         ListFooterComponent={<FooterLoading />}
         renderItem={({ item }) =>
           <Card data={item}/>
