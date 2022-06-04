@@ -23,14 +23,14 @@ import {
 export function Home(){
   const [pokemon, setPokemon] = useState<PokeDTO[]>([]);
   const [loading, setLoading] = useState(true);
-  const [page, setPage] = useState(14);
+  const [page, setPage] = useState(0);
 
   useEffect(() => {
     fetchPokemons()
   }, []);
 
   async function fetchPokemons() {
-    await api.get(`/?limit=${page}`)
+    await api.get(`/?limit=12&offset=${page}`)
       .then((res) => {
         return res.data.results
       })
@@ -38,8 +38,10 @@ export function Home(){
         return Promise.all(results.map((res: any) => axios.get(res.url)))
       })
       .then((results) => {
-        setPokemon(results.map((res) => res.data));
-        setPage(page + 14);
+        const resultadoPokeList = (results.map((res) => res.data));
+
+        setPokemon([...pokemon, ...resultadoPokeList])
+        setPage(page + 12);
         setLoading(false);
       })
   }
