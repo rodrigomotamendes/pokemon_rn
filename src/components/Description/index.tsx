@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { PokeDTO } from '../../dtos/PokeDTO';
+import { api } from '../../services/api';
 
 import WeightIcon from '../../assets/WeightIcon.svg';
 import HeightIcon from '../../assets/HeightIcon.svg';
@@ -37,7 +38,20 @@ interface Props {
   pokemon: PokeDTO;
 }
 
+interface PropsDescription {
+  flavor_text: string,
+  language: {
+    name: string,
+    url: string,
+  },
+  version: {
+    name: string,
+    url: string,
+  }
+};
+
 export function Description({ pokemon } : Props){
+  const [description, setDescription] = useState<PropsDescription>();
 
   const totalBaseStat = 
   pokemon.stats[0].base_stat +
@@ -60,15 +74,28 @@ export function Description({ pokemon } : Props){
 
   const color = pokemon.types[0].type.name;
 
+  useEffect(() => {
+    fetchDetailText()
+  }, []);
+
+  async function fetchDetailText() {
+    const response = await api.get(`pokemon-species/${pokemon.id}/`)
+      .then((res) => {
+        return res.data.flavor_text_entries[0];
+      })
+
+      setDescription(response);
+  }
+
+  console.log(description)
+
   return (
     <DescriptionPokemonContainer>
       <DescriptionText color={color}>
         Descrição
       </DescriptionText>
 
-      <InformationText>
-        Bulbasaur pode ser visto cochilando sob a luz do sol. Há uma semente nas costas. Ao absorver os raios do sol, a semente cresce progressivamente maior
-      </InformationText>
+      <InformationText>{description?.flavor_text.replace(/[\n\r]/g,' ')}</InformationText>
 
       <PhysicalCharacteristicsContainer>
 

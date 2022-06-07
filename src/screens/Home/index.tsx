@@ -33,7 +33,7 @@ export function Home(){
   }, []);
 
   async function fetchPokemons() {
-    await api.get(`/?limit=12&offset=${page}`)
+    await api.get(`/pokemon/?limit=12&offset=${page}`)
       .then((res) => {
         return res.data.results
       })
