@@ -1,5 +1,5 @@
 import styled from 'styled-components/native';
-import { SvgUri } from 'react-native-svg';
+import { Image } from 'react-native';
 
 interface ColorProps {
   color: string;
@@ -146,4 +146,7 @@ export const PokeImageWrap = styled.View`
   justify-content: center;
 `;
 
-export const ImagePokemon = styled(SvgUri)``;
+export const ImagePokemon = styled(Image)`
+  width: 100%;
+  height: 100%;
+`;

@@ -33,9 +33,8 @@ export function Card({ data, ...rest } : Props){
           </TitleNameWrap>
           <ImagePokemonWrap>
             <ImagePokemon
-              width='100%'
-              height='100%'
-              uri={`https://unpkg.com/pokeapi-sprites@2.0.2/sprites/pokemon/other/dream-world/${data.id}.svg`}
+              resizeMode='contain'
+              source={{uri: `https://veekun.com/dex/media/pokemon/global-link/${data.id}.png`}}
             />
           </ImagePokemonWrap>
         </TitleNameContainer>

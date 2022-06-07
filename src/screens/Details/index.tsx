@@ -84,9 +84,8 @@ export function Details(){
 
           <PokeImageWrap>
             <ImagePokemon
-              width='191.65'
-              height='189'
-              uri={`https://unpkg.com/pokeapi-sprites@2.0.2/sprites/pokemon/other/dream-world/${pokemon.id}.svg`}
+              resizeMode='contain'
+              source={{uri: `https://veekun.com/dex/media/pokemon/global-link/${pokemon.id}.png`}}
             />
           </PokeImageWrap>
         </Pokemoninformation>
