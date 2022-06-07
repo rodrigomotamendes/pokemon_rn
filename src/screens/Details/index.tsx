@@ -76,15 +76,10 @@ export function Details(){
           <TypePokemonContainer>
             <TypePokemonWrap>
               <TypePokemon>
-                {'Planta'}
+                {pokemon.types[0].type.name}
               </TypePokemon>
             </TypePokemonWrap>
-
-            <TypePokemonWrap>
-              <TypePokemon>
-                {'Venenoso'}
-              </TypePokemon>
-            </TypePokemonWrap>
+            
           </TypePokemonContainer>
 
           <PokeImageWrap>
