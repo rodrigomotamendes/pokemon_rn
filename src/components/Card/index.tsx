@@ -1,5 +1,6 @@
 import React from 'react';
 import { TouchableOpacityProps } from 'react-native';
+import FastImage from 'react-native-fast-image';
 
 import { PokeDTO } from '../../dtos/PokeDTO';
 
@@ -33,7 +34,7 @@ export function Card({ data, ...rest } : Props){
           </TitleNameWrap>
           <ImagePokemonWrap>
             <ImagePokemon
-              resizeMode='contain'
+              resizeMode={FastImage.resizeMode.contain}
               source={{uri: `https://veekun.com/dex/media/pokemon/global-link/${data.id}.png`}}
             />
           </ImagePokemonWrap>

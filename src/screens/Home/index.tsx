@@ -94,7 +94,7 @@ export function Home(){
         numColumns={2}
         keyExtractor={item => String(item.id)}
         onEndReached={fetchPokemons}
-        onEndReachedThreshold={0.4}
+        onEndReachedThreshold={0.1}
         ListFooterComponent={<FooterLoading />}
         renderItem={renderItem}
       />

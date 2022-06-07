@@ -23,6 +23,7 @@ import {
   ImagePokemon,
 } from './styles';
 import { Description } from '../../components/Description';
+import FastImage from 'react-native-fast-image';
 
 interface Params {
   pokemon: PokeDTO;
@@ -84,7 +85,7 @@ export function Details(){
 
           <PokeImageWrap>
             <ImagePokemon
-              resizeMode='contain'
+              resizeMode={FastImage.resizeMode.contain}
               source={{uri: `https://veekun.com/dex/media/pokemon/global-link/${pokemon.id}.png`}}
             />
           </PokeImageWrap>

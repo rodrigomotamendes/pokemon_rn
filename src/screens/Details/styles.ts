@@ -1,5 +1,5 @@
 import styled from 'styled-components/native';
-import { Image } from 'react-native';
+import FastImage from 'react-native-fast-image';
 
 interface ColorProps {
   color: string;
@@ -146,7 +146,7 @@ export const PokeImageWrap = styled.View`
   justify-content: center;
 `;
 
-export const ImagePokemon = styled(Image)`
+export const ImagePokemon = styled(FastImage)`
   width: 100%;
   height: 100%;
 `;

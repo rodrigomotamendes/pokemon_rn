@@ -1,5 +1,6 @@
 import styled from 'styled-components/native';
-import { Image, TouchableOpacity } from 'react-native';
+import { TouchableOpacity } from 'react-native';
+import FastImage from 'react-native-fast-image';
 
 interface ColorProps {
   color: string;
@@ -111,7 +112,7 @@ export const ImagePokemonWrap = styled.View`
   justify-content: flex-end;
 `;
 
-export const ImagePokemon = styled(Image)`
+export const ImagePokemon = styled(FastImage)`
   width: 100%;
   height: 100%;
 `;
