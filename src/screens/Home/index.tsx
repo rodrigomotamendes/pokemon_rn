@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { StatusBar } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 import axios from 'axios';
 import { api } from '../../services/api';
@@ -21,6 +22,8 @@ import {
 } from './styles';
 
 export function Home(){
+  const navigation = useNavigation<any>();
+
   const [pokemon, setPokemon] = useState<PokeDTO[]>([]);
   const [loading, setLoading] = useState(true);
   const [page, setPage] = useState(0);
@@ -44,6 +47,10 @@ export function Home(){
         setPage(page + 12);
         setLoading(false);
       })
+  }
+
+  function handlePokeDetails(pokemon : PokeDTO) {
+    navigation.navigate('Details', { pokemon })
   }
 
   if(loading == true) {
@@ -82,7 +89,7 @@ export function Home(){
         onEndReachedThreshold={0.4}
         ListFooterComponent={<FooterLoading />}
         renderItem={({ item }) =>
-          <Card data={item}/>
+          <Card data={item} onPress={() => handlePokeDetails(item)}/>
         }
       />
       

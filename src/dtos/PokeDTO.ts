@@ -11,14 +11,20 @@ export interface PokeDTO {
         name: string;
         url: string;
       }
-    }[],
+    }[];
   stats: 
     {
-      base_stat: string;
+      base_stat: number;
       effort: number;
       stat: {
         name: string;
         url: string;
       }
     }[];
+  moves:{
+    move: {
+      name: string,
+      url: string,
+    }
+  }[];
 }
