@@ -87,8 +87,6 @@ export function Description({ pokemon } : Props){
       setDescription(response);
   }
 
-  console.log(description)
-
   return (
     <DescriptionPokemonContainer>
       <DescriptionText color={color}>
