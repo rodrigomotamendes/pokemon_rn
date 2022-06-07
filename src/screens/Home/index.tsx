@@ -21,6 +21,10 @@ import {
   PokeList,
 } from './styles';
 
+interface PokeRender {
+  item: PokeDTO;
+}
+
 export function Home(){
   const navigation = useNavigation<any>();
 
@@ -33,7 +37,7 @@ export function Home(){
   }, []);
 
   async function fetchPokemons() {
-    await api.get(`/pokemon/?limit=12&offset=${page}`)
+    await api.get(`/pokemon/?limit=20&offset=${page}`)
       .then((res) => {
         return res.data.results
       })
@@ -44,7 +48,7 @@ export function Home(){
         const resultadoPokeList = (results.map((res) => res.data));
 
         setPokemon([...pokemon, ...resultadoPokeList])
-        setPage(page + 12);
+        setPage(page + 20);
         setLoading(false);
       })
   }
@@ -58,6 +62,10 @@ export function Home(){
       <Loading/>
     )
   }
+
+  const renderItem = ({ item }: PokeRender) => (
+    <Card data={item} onPress={() => handlePokeDetails(item)}/>
+  );
 
   return (
     <Container>
@@ -88,9 +96,7 @@ export function Home(){
         onEndReached={fetchPokemons}
         onEndReachedThreshold={0.4}
         ListFooterComponent={<FooterLoading />}
-        renderItem={({ item }) =>
-          <Card data={item} onPress={() => handlePokeDetails(item)}/>
-        }
+        renderItem={renderItem}
       />
       
     </Container>

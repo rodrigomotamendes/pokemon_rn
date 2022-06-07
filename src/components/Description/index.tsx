@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, memo } from 'react';
 import { PokeDTO } from '../../dtos/PokeDTO';
 import { api } from '../../services/api';
 
@@ -50,7 +50,7 @@ interface PropsDescription {
   }
 };
 
-export function Description({ pokemon } : Props){
+function DescriptionComponent({ pokemon } : Props){
   const [description, setDescription] = useState<PropsDescription>();
 
   const totalBaseStat = 
@@ -256,3 +256,7 @@ export function Description({ pokemon } : Props){
     </DescriptionPokemonContainer>
   );
 }
+
+export const Description = memo(DescriptionComponent, (prevProps, nextProps) => {
+  return Object.is(prevProps.pokemon, nextProps.pokemon)
+})

@@ -12,7 +12,8 @@ interface PokemonStatusProps {
 export const DescriptionPokemonContainer = styled.View`
   flex: 1;
   margin-top: -40px;
-  border-radius: 40px;
+  border-top-left-radius: 40px;
+  border-top-right-radius: 40px;
   background-color: ${({ theme }) => theme.colors.text_light};
   padding-top: 52px;
   padding-bottom: 52px;
